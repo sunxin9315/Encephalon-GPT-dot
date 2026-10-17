@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "encephalon"
+version = "0.1.0"
+description = "Offline causal runtime foundation for the Encephalon RTX5090 research route"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+encephalon = "encephalon.cli:main"
+
+[tool.setuptools]
+packages = ["encephalon"]
+
+[tool.setuptools.package-data]
+encephalon = ["data/*.json"]

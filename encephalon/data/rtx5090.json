@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "profile_id": "rtx5090",
+  "profile_status": "design_only",
+  "provenance": {
+    "kind": "design_only",
+    "source_documents": [
+      "docs/design/README.md",
+      "docs/design/01-rtx5090-architecture.md"
+    ],
+    "design_version": "v0.1",
+    "design_reviewed_dates": [
+      "2026-10-13",
+      "2026-10-14"
+    ],
+    "hardware_observed": false,
+    "models_downloaded": false,
+    "measured_performance": false,
+    "note": "Architecture specifications, starting hyperparameters, budgets, and acceptance targets transcribed from the supplied design; verify against pinned assets and runtime measurements before use."
+  },
+  "target": {
+    "operating_system": "Ubuntu Linux",
+    "os_version": "UNRESOLVED",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "gpu_count": 1,
+    "gpu_memory_gb_vendor_spec": 32,
+    "gpu_memory_type": "GDDR7",
+    "host_memory_gb_planning_range": [
+      64,
+      128
+    ],
+    "nvme_free_space_tb_planning_minimum": 2,
+    "single_user_sessions": 1,
+    "actual_environment": "Use collect_diagnostics; none of these target values assert detected hardware."
+  },
+  "runtime": {
+    "default_mode": "cpu_contract_replay",
+    "gpu_probe_opt_in": true,
+    "automatic_model_downloads": false,
+    "network_calls_enabled": false,
+    "resident_backbone_count_max": 1,
+    "baseline": "B0",
+    "primary_language": "zh",
+    "weight_dtype_design_default": "bfloat16",
+    "sensevoice_fp32_if_required": true
+  },
+  "baseline_configurations": {
+    "B0": {
+      "status": "native_baseline_to_reproduce",
+      "model_id": "minimind_o",
+      "hidden_dim": 768,
+      "thinker_layers": 8,
+      "talker_layers": 4,
+      "state_read_after_layers": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "existing_weights_frozen": true
+    },
+    "B1": {
+      "status": "research_only_requires_trained_bridge",
+      "semantic_model_id": "qwen3_1_7b",
+      "talker_initialization": "minimind_o",
+      "hidden_dim": 2048,
+      "transformer_layers": 28,
+      "query_heads": 16,
+      "kv_heads": 8,
+      "head_dim": 128,
+      "state_read_after_layers": [
+        7,
+        14,
+        21,
+        28
+      ],
+      "cross_attention_bottleneck": 512,
+      "existing_weights_frozen_initially": true,
+      "long_thinking_on_realtime_path": false,
+      "promotion_requires": "B0 reproduction and independently evaluated trained semantic-to-audio bridge; changing hidden_size alone is insufficient."
+    }
+  },
+  "state": {
+    "slots": 64,
+    "width": 512,
+    "update_blocks": 4,
+    "ffn_width": 2048,
+    "tick_ms": 80,
+    "training_tbptt_ms": 8000,
+    "parameter_count_millions_planning_range": [
+      15,
+      20
+    ]
+  },
+  "persona": {
+    "personality_dim": 256,
+    "emotion_dim": 32,
+    "relationship_dim": 64,
+    "appraisal_dim": 16,
+    "semantic_lora_rank_initial": 8,
+    "cross_persona_memory_sharing": false
+  },
+  "sensors": {
+    "camera_count": 2,
+    "camera_capture_fps_planning_range": [
+      15,
+      30
+    ],
+    "vision_semantic_fps_per_view": 2,
+    "microphone_channels_planning_range": [
+      4,
+      8
+    ],
+    "semantic_input_sample_rate_hz": 16000,
+    "output_sample_rate_hz": 24000,
+    "preserve_original_multichannel_audio": true
+  },
+  "modalities": {
+    "vision": {
+      "model_id": "siglip2_vision",
+      "image_size": [
+        256,
+        256
+      ],
+      "patch_tokens_per_view": 64,
+      "encoder_width": 768,
+      "connector_tokens_per_view": 8,
+      "connector_tokens_total": 16,
+      "cache_ms": 2000,
+      "load_vision_tower_only": true,
+      "causality": "single_frame_encoder"
+    },
+    "speech_semantics": {
+      "model_id": "sensevoice_small",
+      "encoder_width": 512,
+      "window_ms_range": [
+        800,
+        2000
+      ],
+      "initial_hop_ms": 320,
+      "evaluation_window_ms": [
+        800,
+        1600,
+        3200
+      ],
+      "connector_tokens": 16,
+      "causality": "bounded_arrived_window_recomputation_not_native_streaming"
+    },
+    "environment_sound": {
+      "model_id": "beats_iter3_plus",
+      "enabled_initially": false,
+      "disabled_means": "degraded_environment_sound_capability",
+      "encoder_width_expected": 768,
+      "verify_width_from": "checkpoint cfg.encoder_embed_dim",
+      "window_ms": 2000,
+      "hop_ms": 1000,
+      "connector_tokens": 4,
+      "causality": "bidirectional_window_model"
+    },
+    "speaker": {
+      "model_id": "campplus",
+      "embedding_dim": 192,
+      "valid_speech_window_ms_range": [
+        1000,
+        2000
+      ],
+      "initial_hop_ms": 500,
+      "connector_tokens": 1,
+      "causality": "window_embedding_not_online_source_separator"
+    },
+    "fast_acoustic": {
+      "frame_ms": 20,
+      "tick_ms": 80,
+      "causal_conv_layers": 2,
+      "gru_width": 128,
+      "connector_tokens": 1
+    },
+    "text_cloud_memory": {
+      "connector_tokens_max": 16
+    }
+  },
+  "audio": {
+    "codec_model_id": "mimi",
+    "codebooks": 8,
+    "frame_rate_hz": 12.5,
+    "frame_ms": 80,
+    "sample_rate_hz": 24000,
+    "packet_ms_range": [
+      80,
+      160
+    ],
+    "talker_condition_dim": 768,
+    "codec_talker_compatibility_verified": false,
+    "playback_cursors": [
+      "generated",
+      "queued",
+      "played"
+    ],
+    "committed_history_cursor": "played",
+    "stop_discards_unplayed_packets": true
+  },
+  "claims": {
+    "max_slots": 8,
+    "evidence_gating_required": true,
+    "cloud_unavailable_does_not_confirm_claim": true
+  },
+  "memory": {
+    "model_id": "bge_small_zh",
+    "embedding_dim": 512,
+    "long_term_storage": "CPU/NVMe",
+    "retrieval_top_k": 8,
+    "persona_hard_isolation": true
+  },
+  "cloud": {
+    "mode": "disabled_in_foundation",
+    "future_mode": "inference_only_async",
+    "training_calls_allowed": false,
+    "training_data_generation_allowed": false,
+    "simulator_future_completion_visible_to_policy": false
+  },
+  "budgets": {
+    "status": "planning_not_measured",
+    "units": "GiB",
+    "B1_inference_planning_range": [
+      14,
+      22
+    ],
+    "B1_steady_peak_target_max": 24,
+    "B1_training_planning_range": [
+      18,
+      28
+    ],
+    "text_kv_tokens_max": 4096,
+    "qwen_original_kv_gib_estimate": 0.875,
+    "new_modules_parameters_millions_range": [
+      40,
+      80
+    ],
+    "training_microbatch": 1,
+    "training_sequence_tokens_range": [
+      1024,
+      2048
+    ],
+    "training_gradient_accumulation_initial": 16,
+    "training_gradient_checkpointing": true,
+    "B1_full_adam_all_modules_claimed_feasible": false
+  },
+  "acceptance_targets": {
+    "status": "proposed_not_achieved",
+    "timing_and_scenarios_must_be_reported": true,
+    "interrupt_events_min": 1000,
+    "unsupported_cloud_cases_min": 500,
+    "non_cloud_control_cases_min": 500,
+    "relative_false_interrupt_reduction": 0.3,
+    "interrupt_recall_drop_max_percentage_points": 5,
+    "semantically_decidable_to_stop_p95_ms_max_initial": 300,
+    "persona_conditions_min": 3,
+    "long_session_minutes_min": 30,
+    "audio_rtf_max_exclusive": 1.0,
+    "p95_packet_generation_fraction_of_packet_duration_max": 0.8,
+    "deterministic_stale_result_acceptance_target": 0,
+    "deterministic_cross_persona_leakage_target": 0
+  }
+}

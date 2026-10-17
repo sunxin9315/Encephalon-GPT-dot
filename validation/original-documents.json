@@ -1,0 +1,52 @@
+[
+  {
+    "path": "docs/design/01-rtx5090-architecture.md",
+    "sha256": "ef03c98022dd768c5f19def153a4cfa2e89c6e777b3b91e288915712b571e3f2",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/02-rtx5090-training.md",
+    "sha256": "5ca44a6ce41265275d1ab2f3d9bb780c936c7c19d70082b76729d239500d6c81",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/03-rtx-pro6000-architecture.md",
+    "sha256": "0729c5611779aa1819d843ff83d796a6e66d9448c630633c674373de3653676d",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/04-rtx-pro6000-training.md",
+    "sha256": "5faf3757f8368ba3e11d85b846785bde26f2449165a10207464ef2c5e6afd164",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/05-cluster-architecture.md",
+    "sha256": "7de67b8f93c5d74517c1b10ab6f9cd0d6feddeaa70decc84274180757a4356fa",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/06-cluster-training.md",
+    "sha256": "d57f05729c1d426307e077066fbe89f62795da567c0e82dee855826f62ef3b51",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/07-character-memory-emotion.md",
+    "sha256": "45edadc40abb3f827d762e86522b9cd5b9e5ca5b40c5028c26649c730ec1e8e2",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/08-edge-desktop-distributed-deployment.md",
+    "sha256": "8a77d2fa7670bfed27bba811c4a2fbd9b93006406a9872b99be286e6aea6aec9",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/design/README.md",
+    "sha256": "af42ec772d950e42eafd556e30983a6f9418723bbc5ee9e3ad97ccae730d6ded",
+    "preserved_byte_for_byte": true
+  },
+  {
+    "path": "docs/review/REVIEW_BRIEF.md",
+    "sha256": "3d57d724d3c833a8d1718cd0972eec891a6178b2ed057d72cd218958de4aa339",
+    "preserved_byte_for_byte": true
+  }
+]

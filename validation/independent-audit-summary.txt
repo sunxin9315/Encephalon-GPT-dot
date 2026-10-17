@@ -1,0 +1,11 @@
+Independent audit verdict: PASS for the documented S0a first engineering batch only.
+
+Final frozen source: all 164 delivered tests passed, including 34 independently authored tests. Synthetic replay passed 4 scenarios, 38 commands and 44 assertions, with byte-identical repeated output.
+
+An offline wheel was built twice with a fixed SOURCE_DATE_EPOCH and was byte-identical. It installed into a fresh virtual environment and ran default commands outside the source checkout. Doctor remained CPU-only; all six record types validated. The unresolved model lock correctly failed closed with exit 2 and 87 blockers; malformed replay failed cleanly with exit 2.
+
+All 10 supplied design/review documents remain byte-identical. Python 3.10 syntax check passed; actual runtime testing used Python 3.12.14. No GPU, model, network or audio-device execution occurred.
+
+Full PersonPack loading/knowledge-boundary validation, actual assets, model/training/GPU performance, real device I/O, durable archival and security controls remain outside this first batch. Do not describe this result as complete S0, B0 reproduction or RTX5090 readiness.
+
+Detailed machine-readable evidence: independent-audit-results.json.

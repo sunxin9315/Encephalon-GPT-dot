@@ -1,0 +1,45 @@
+{
+  "gpu": {
+    "devices": [],
+    "probe_requested": false,
+    "reason": "CPU-only default; use --probe-gpu to request a local read-only query",
+    "status": "not_probed"
+  },
+  "limitations": [
+    "This report is not a model-readiness or RTX 5090 compatibility certificate.",
+    "Target profile dimensions, budgets, and latency goals are design assumptions, not observations.",
+    "Memory and CPU counts may describe the host rather than container limits."
+  ],
+  "observed_at_utc": "2026-10-17T07:06:34.254913+00:00",
+  "platform": {
+    "machine": "x86_64",
+    "release": "6.18.55",
+    "system": "Linux"
+  },
+  "python": {
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "implementation": "CPython",
+    "version": "3.12.14"
+  },
+  "resources": {
+    "logical_cpu_count": 9,
+    "memory_source": "os.sysconf physical pages; not cgroup/quota adjusted",
+    "physical_memory_bytes": 10451439616,
+    "working_filesystem_free_bytes": 31786627072,
+    "working_filesystem_total_bytes": 33770192896
+  },
+  "schema_version": 1,
+  "scope": {
+    "model_downloads": false,
+    "model_forward": false,
+    "network_access": false,
+    "performance_benchmark": false,
+    "tensor_framework_imports": false
+  },
+  "target": {
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "operating_system": "Ubuntu Linux",
+    "profile_id": "rtx5090",
+    "target_is_not_detected_hardware": true
+  }
+}

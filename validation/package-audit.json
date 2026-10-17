@@ -1,0 +1,82 @@
+{
+  "audit_date": "2026-10-17",
+  "verdict": "pass_for_documented_S0a_first_engineering_batch_only",
+  "tested_python": "3.12.14",
+  "offline_build": {
+    "passed": true,
+    "flags": [
+      "--no-index",
+      "--no-deps",
+      "--no-build-isolation"
+    ],
+    "build_tools": {
+      "setuptools": "84.0.0",
+      "wheel": "0.48.0"
+    },
+    "SOURCE_DATE_EPOCH": 1792209600,
+    "two_builds_byte_identical": true
+  },
+  "wheel": {
+    "path": "dist/encephalon-0.1.0-py3-none-any.whl",
+    "sha256": "45ead05a74b33debf82929fe7b4f1759997c85579b4aa84185d5a2ab8b721726",
+    "bytes": 33732
+  },
+  "clean_venv_install": {
+    "passed": true,
+    "installed_import_path_verified": true,
+    "outside_source_cwd": true
+  },
+  "installed_cli": {
+    "doctor": {
+      "exit": 0,
+      "gpu_status": "not_probed"
+    },
+    "replay": {
+      "exit": 0,
+      "scenarios": 4,
+      "commands": 38,
+      "assertions": 44,
+      "repeat_output_byte_identical": true
+    },
+    "validate": {
+      "exit": 0,
+      "record_types": 6
+    },
+    "check_manifest": {
+      "exit": 2,
+      "expected_failure": true,
+      "blockers": 87,
+      "assets_verified": false
+    },
+    "malformed_replay": {
+      "exit": 2,
+      "expected_failure": true,
+      "traceback": false
+    }
+  },
+  "final_shipped_test_suite": {
+    "passed": 164,
+    "failed": 0,
+    "independent_tests_included": 34,
+    "log": "validation/independent-full-test-log.txt"
+  },
+  "original_documents": {
+    "byte_identical_count": 10
+  },
+  "python310_syntax": "passed_only; Python 3.10 runtime not tested",
+  "network_calls": false,
+  "model_downloads": false,
+  "gpu_tested": false,
+  "physical_audio_played": false,
+  "limits": [
+    "No B0 model reproduction, inference or training.",
+    "No target Ubuntu/RTX5090 hardware compatibility or performance result.",
+    "Full PersonPack assets, M0 knowledge boundaries and real adapter/voice loading not integrated.",
+    "No durable archival/crash recovery, real device event loop or network security validation."
+  ],
+  "logs": [
+    "validation/package-build-log.txt",
+    "validation/package-build-repeat-log.txt",
+    "validation/package-install-log.txt"
+  ]
+}

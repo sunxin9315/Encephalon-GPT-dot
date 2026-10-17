@@ -1,0 +1,41 @@
+{
+  "schema_version": "encephalon.source_observation.v1",
+  "checked_at_utc": "2026-10-17",
+  "scope": "read_only_official_web_metadata_no_weights_downloaded",
+  "execution_verified": false,
+  "artifacts": [
+    {
+      "id": "minimind-o-code",
+      "url": "https://github.com/jingyaogong/minimind-o",
+      "observed_revision": "ccab6d98520ac5ac5d7583a3fa21a65105137e28",
+      "revision_evidence": "https://github.com/jingyaogong/minimind-o/commits/master/",
+      "file_hashes": null,
+      "note": "History snapshot observed; commit detail fetch failed; branch source inspected separately; not a verified lock."
+    },
+    {
+      "id": "minimind-3o-transformers",
+      "url": "https://huggingface.co/jingyaogong/minimind-3o",
+      "observed_revision": "ee3febbd08cc5b2bd41c039c825a8934232fee33",
+      "revision_evidence": "https://huggingface.co/jingyaogong/minimind-3o/commit/ee3febbd08cc5b2bd41c039c825a8934232fee33",
+      "file_hashes": null,
+      "note": "File list and config inspected; no weights loaded."
+    },
+    {
+      "id": "minimind-3o-pytorch",
+      "url": "https://huggingface.co/jingyaogong/minimind-3o-pytorch",
+      "observed_revision": "9e22fb0e51852359ff51bd48d91ec3a345dbd75b",
+      "revision_evidence": "https://huggingface.co/jingyaogong/minimind-3o-pytorch/commit/9e22fb0e51852359ff51bd48d91ec3a345dbd75b",
+      "preferred_dense_release_file": "sft_omni_768.pth",
+      "file_hashes": null,
+      "note": "File list inspected; no weights loaded."
+    }
+  ],
+  "companion_collection": "https://huggingface.co/collections/jingyaogong/minimind-o",
+  "missing_before_execution": [
+    "companion revisions and per-file hashes",
+    "code review and permitted execution",
+    "licenses archived",
+    "RTX5090 compatible runtime verified",
+    "explicit load completeness and actual dtype validation"
+  ]
+}

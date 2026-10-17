@@ -1,0 +1,302 @@
+{
+  "assertions": 44,
+  "model_inference_performed": false,
+  "passed": true,
+  "physical_audio_played": false,
+  "scenario_count": 4,
+  "scenarios": [
+    {
+      "assertions": 11,
+      "checkpoints": [
+        {
+          "action": "tick",
+          "step": 2,
+          "verified": {
+            "delta_ids": [],
+            "visible": []
+          }
+        },
+        {
+          "action": "tick",
+          "step": 3,
+          "verified": {
+            "valid_new_event": [
+              true
+            ],
+            "visible": [
+              [
+                "silence-window",
+                0,
+                "valid"
+              ]
+            ]
+          }
+        },
+        {
+          "action": "tick",
+          "step": 4,
+          "verified": {
+            "delta_ids": [],
+            "valid_new_event": []
+          }
+        },
+        {
+          "action": "tick",
+          "step": 5,
+          "verified": {
+            "delta_ids": [
+              "silence-window"
+            ],
+            "valid_new_event": [
+              false
+            ],
+            "visible": [
+              [
+                "silence-window",
+                1,
+                "valid"
+              ]
+            ]
+          }
+        },
+        {
+          "action": "tick",
+          "step": 7,
+          "verified": {
+            "delta_ids": [
+              "mic-gap"
+            ],
+            "valid_new_event": [
+              false
+            ]
+          }
+        }
+      ],
+      "final_state": {
+        "cache_handle_count": 0,
+        "claim_ids": [],
+        "closed_utterances": [],
+        "now_ms": 160,
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "playback": null,
+        "premise_versions": {},
+        "question_version": 0,
+        "session_id": "causal-session",
+        "state_version": 0,
+        "switch_pending": false,
+        "voice_profile": "synthetic-voice-not-loaded"
+      },
+      "scenario_id": "causal-availability-revision-silence",
+      "steps": 8
+    },
+    {
+      "assertions": 18,
+      "checkpoints": [
+        {
+          "action": "queue",
+          "step": 5,
+          "verified": {
+            "generated_until_ms": 240,
+            "played_until_ms": 0,
+            "queued_until_ms": 160,
+            "said_text": []
+          }
+        },
+        {
+          "action": "played",
+          "step": 6,
+          "verified": {
+            "played_until_ms": 80,
+            "said_text": [
+              "第一段已播"
+            ]
+          }
+        },
+        {
+          "action": "begin_switch",
+          "step": 8,
+          "verified": {
+            "switch_pending": true
+          }
+        },
+        {
+          "action": "stopped",
+          "step": 9,
+          "verified": {
+            "active_queue_ms": 0,
+            "discarded_unplayed_ms": 120,
+            "played_until_ms": 120,
+            "said_text": [
+              "第一段已播"
+            ]
+          }
+        },
+        {
+          "action": "switch",
+          "step": 10,
+          "verified": {
+            "active_scope": {
+              "persona_id": "synthetic-b",
+              "persona_version": "0.1",
+              "session_id": "new-persona-session"
+            },
+            "archived_memory_count": 1,
+            "cache_handle_count": 0,
+            "state_version": 0
+          }
+        },
+        {
+          "action": "snapshot",
+          "step": 11,
+          "verified": {
+            "claim_ids": [],
+            "playback": null,
+            "voice_profile": "synthetic-b-voice-not-loaded"
+          }
+        }
+      ],
+      "final_state": {
+        "cache_handle_count": 0,
+        "claim_ids": [],
+        "closed_utterances": [],
+        "now_ms": 0,
+        "persona_id": "synthetic-b",
+        "persona_version": "0.1",
+        "playback": null,
+        "premise_versions": {},
+        "question_version": 0,
+        "session_id": "new-persona-session",
+        "state_version": 0,
+        "switch_pending": false,
+        "voice_profile": "synthetic-b-voice-not-loaded"
+      },
+      "scenario_id": "partial-playback-stop-persona-switch",
+      "steps": 12
+    },
+    {
+      "assertions": 11,
+      "checkpoints": [
+        {
+          "action": "premise",
+          "step": 0,
+          "verified": {
+            "state_version": 1
+          }
+        },
+        {
+          "action": "request",
+          "step": 2,
+          "verified": {
+            "status": "queued"
+          }
+        },
+        {
+          "action": "dispatch",
+          "step": 3,
+          "verified": {
+            "status": "running"
+          }
+        },
+        {
+          "action": "advance_state",
+          "step": 4,
+          "verified": {
+            "state_version": 2
+          }
+        },
+        {
+          "action": "result",
+          "step": 5,
+          "verified": {
+            "accepted": true,
+            "reason": "applicable_not_fact_verified"
+          }
+        },
+        {
+          "action": "change_question",
+          "step": 8,
+          "verified": {
+            "question_version": 1
+          }
+        },
+        {
+          "action": "result",
+          "step": 9,
+          "verified": {
+            "accepted": false,
+            "reason": "question_changed"
+          }
+        },
+        {
+          "action": "snapshot",
+          "step": 10,
+          "verified": {
+            "claim_ids": [],
+            "playback": null
+          }
+        }
+      ],
+      "final_state": {
+        "cache_handle_count": 0,
+        "claim_ids": [],
+        "closed_utterances": [],
+        "now_ms": 300,
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "playback": null,
+        "premise_versions": {
+          "premise-1": 1
+        },
+        "question_version": 1,
+        "session_id": "async-session",
+        "state_version": 3,
+        "switch_pending": false,
+        "voice_profile": "synthetic-voice-not-loaded"
+      },
+      "scenario_id": "async-dependency-proof-question-change",
+      "steps": 11
+    },
+    {
+      "assertions": 4,
+      "checkpoints": [
+        {
+          "action": "result",
+          "step": 5,
+          "verified": {
+            "accepted": false,
+            "reason": "scope_mismatch"
+          }
+        },
+        {
+          "action": "snapshot",
+          "step": 6,
+          "verified": {
+            "claim_ids": [],
+            "playback": null
+          }
+        }
+      ],
+      "final_state": {
+        "cache_handle_count": 0,
+        "claim_ids": [],
+        "closed_utterances": [],
+        "now_ms": 10,
+        "persona_id": "synthetic-b",
+        "persona_version": "0.2",
+        "playback": null,
+        "premise_versions": {},
+        "question_version": 0,
+        "session_id": "current-session",
+        "state_version": 0,
+        "switch_pending": false,
+        "voice_profile": "synthetic-b-voice-not-loaded"
+      },
+      "scenario_id": "old-persona-callback-isolation",
+      "steps": 7
+    }
+  ],
+  "schema_version": "encephalon.replay_report.v1",
+  "steps": 38,
+  "synthetic": true
+}

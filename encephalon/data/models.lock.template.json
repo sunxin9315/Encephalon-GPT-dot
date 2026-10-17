@@ -1,0 +1,415 @@
+{
+  "schema_version": 1,
+  "manifest_status": "template",
+  "profile_id": "rtx5090",
+  "scope": "Planned B0 and B1 asset inventory, not an executable or resolved model lock",
+  "provenance": {
+    "kind": "design_only",
+    "source_documents": [
+      "docs/design/README.md",
+      "docs/design/01-rtx5090-architecture.md"
+    ],
+    "design_version": "v0.1",
+    "design_reviewed_dates": [
+      "2026-10-13",
+      "2026-10-14"
+    ],
+    "hardware_observed": false,
+    "models_downloaded": false,
+    "measured_performance": false,
+    "note": "Architecture specifications, starting hyperparameters, budgets, and acceptance targets transcribed from the supplied design; verify against pinned assets and runtime measurements before use."
+  },
+  "resolution_rules": [
+    "Do not use this template to download or load a model.",
+    "Resolve every selected artifact to an immutable full commit revision; floating main/master/latest and release tags are not pins.",
+    "Record SHA256 for every weight shard, configuration, processor, tokenizer, and codec file actually used.",
+    "Archive and review the weight license separately from repository code licenses.",
+    "After resolving assets, validate hashes against local bytes and confirm actual tensor and codec compatibility before declaring readiness.",
+    "Structural validation alone cannot prove byte identity, licensing permission, or model compatibility."
+  ],
+  "models": [
+    {
+      "id": "minimind_o",
+      "source": "https://huggingface.co/jingyaogong/minimind-3o",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "Native paired B0 Thinker/Talker; Talker initialization for B1",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "codec": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "license": {
+        "identifier": "Apache-2.0",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Select and record the actual inference or training-format checkpoint; the design also names jingyaogong/minimind-3o-pytorch. Confirm paired Mimi codebooks."
+    },
+    {
+      "id": "qwen3_1_7b",
+      "source": "https://huggingface.co/Qwen/Qwen3-1.7B",
+      "routes": [
+        "B1"
+      ],
+      "role": "Research semantic backbone; not a drop-in omni model",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": false,
+        "reason": "Text-only path uses the pinned tokenizer; no separate multimodal processor."
+      },
+      "tokenizer": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "Apache-2.0",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Requires independently trained semantic-to-Talker bridge. Revision and all tokenizer assets must match."
+    },
+    {
+      "id": "sensevoice_small",
+      "source": "https://huggingface.co/FunAudioLLM/SenseVoiceSmall",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "Speech-semantic arrived-window encoder",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "FunASR-MODEL-LICENSE-v1.1",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Weight license is the FunASR custom model agreement, not the code license. Verify against imported weights."
+    },
+    {
+      "id": "siglip2_vision",
+      "source": "https://huggingface.co/google/siglip2-base-patch32-256",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "Vision tower only",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": false,
+        "reason": "This feature/codec path does not consume text tokens; no tokenizer is loaded."
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "Apache-2.0",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Do not load unused text tower or tokenizer for the vision-only path."
+    },
+    {
+      "id": "beats_iter3_plus",
+      "source": "https://github.com/microsoft/unilm/tree/master/beats",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "Optional BEATs_iter3+ (AS2M) environmental sound encoder",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": false,
+        "reason": "This feature/codec path does not consume text tokens; no tokenizer is loaded."
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "UNRESOLVED",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Repository MIT does not by itself verify the imported weight license. Resolve checkpoint origin, immutable code revision, checkpoint hashes, and weight-license evidence."
+    },
+    {
+      "id": "campplus",
+      "source": "https://modelscope.cn/models/iic/speech_campplus_sv_zh-cn_16k-common",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "16 kHz speaker embedding",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": false,
+        "reason": "This feature/codec path does not consume text tokens; no tokenizer is loaded."
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "UNRESOLVED",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "3D-Speaker tool repository Apache-2.0 is not a substitute for archiving the model-file license."
+    },
+    {
+      "id": "mimi",
+      "source": "https://huggingface.co/kyutai/mimi",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "Streaming audio codec compatible with selected Talker",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "tokenizer": {
+        "required": false,
+        "reason": "This feature/codec path does not consume text tokens; no tokenizer is loaded."
+      },
+      "codec": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "license": {
+        "identifier": "CC-BY-4.0",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Select this model or the paired same-origin MiniMind-O codec and prove compatibility; eight codebooks, 12.5 Hz, 24 kHz are design constraints."
+    },
+    {
+      "id": "bge_small_zh",
+      "source": "https://huggingface.co/BAAI/bge-small-zh-v1.5",
+      "routes": [
+        "B0",
+        "B1"
+      ],
+      "role": "CPU-first Chinese memory embedding",
+      "revision": "UNRESOLVED",
+      "weights": [
+        {
+          "path": "UNRESOLVED",
+          "sha256": "UNRESOLVED"
+        }
+      ],
+      "processor": {
+        "required": false,
+        "reason": "Text-only path uses the pinned tokenizer; no separate multimodal processor."
+      },
+      "tokenizer": {
+        "required": true,
+        "revision": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "codec": {
+        "required": false,
+        "reason": "This component does not encode or decode audio tokens; Mimi is pinned separately."
+      },
+      "license": {
+        "identifier": "MIT",
+        "verification_status": "UNRESOLVED",
+        "files": [
+          {
+            "path": "UNRESOLVED",
+            "sha256": "UNRESOLVED"
+          }
+        ]
+      },
+      "notes": "Chinese checkpoint is 512 dimensions; do not substitute the English 384-dimensional small model."
+    }
+  ]
+}

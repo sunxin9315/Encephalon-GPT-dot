@@ -1,0 +1,30 @@
+{
+  "date_utc": "2026-10-17",
+  "scope": "CPU-only source publication validation; no model or GPU work",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "count": 164,
+    "passed": true
+  },
+  "replay": {
+    "command": "python3 -m encephalon replay",
+    "two_runs_byte_identical": true,
+    "sha256": "e04ec1c2663100517693bd6d2b83d5a8124087dc5d91cc1a46ed6de9de438356",
+    "scenarios": 4,
+    "steps": 38,
+    "assertions": 44
+  },
+  "original_documents": {
+    "count": 10,
+    "sha256_matches_preserved_manifest": true
+  },
+  "excluded": [
+    "dist/",
+    "__pycache__/",
+    "*.pyc",
+    "build/",
+    "*.egg-info/",
+    ".venv/"
+  ],
+  "log_sanitization": "Only local execution-machine and temporary staging paths are replaced with explicit redaction labels."
+}

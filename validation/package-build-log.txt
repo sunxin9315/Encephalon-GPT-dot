@@ -1,0 +1,10 @@
+WARNING: The directory '[redacted local pip cache]' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing [local source staging]
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: encephalon
+  Building wheel for encephalon (pyproject.toml): started
+  Building wheel for encephalon (pyproject.toml): finished with status 'done'
+  Created wheel for encephalon: filename=encephalon-0.1.0-py3-none-any.whl size=33732 sha256=45ead05a74b33debf82929fe7b4f1759997c85579b4aa84185d5a2ab8b721726
+  Stored in directory: [redacted temporary wheel cache]
+Successfully built encephalon

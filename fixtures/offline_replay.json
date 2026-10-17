@@ -1,0 +1,827 @@
+{
+  "schema_version": "encephalon.replay.v1",
+  "mock": true,
+  "synthetic": true,
+  "purpose": "engineering_contract_test_not_training_data",
+  "scenarios": [
+    {
+      "scenario_id": "causal-availability-revision-silence",
+      "scope": {
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "session_id": "causal-session"
+      },
+      "voice_profile": "synthetic-voice-not-loaded",
+      "commands": [
+        {
+          "action": "observe",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "causal-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 160,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 160,
+              "reason": null
+            },
+            "revision": 1,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "observation",
+            "observation_id": "silence-window",
+            "modality": "audio",
+            "payload": {
+              "energy": 0.0,
+              "quality_review": "corrected metadata",
+              "mock": true
+            }
+          }
+        },
+        {
+          "action": "observe",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "causal-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 80,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 80,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "observation",
+            "observation_id": "silence-window",
+            "modality": "audio",
+            "payload": {
+              "energy": 0.0,
+              "mock": true
+            }
+          }
+        },
+        {
+          "action": "tick",
+          "at_ms": 79,
+          "expect": {
+            "visible": [],
+            "delta_ids": []
+          }
+        },
+        {
+          "action": "tick",
+          "at_ms": 80,
+          "expect": {
+            "visible": [
+              [
+                "silence-window",
+                0,
+                "valid"
+              ]
+            ],
+            "valid_new_event": [
+              true
+            ]
+          }
+        },
+        {
+          "action": "tick",
+          "at_ms": 100,
+          "expect": {
+            "delta_ids": [],
+            "valid_new_event": []
+          }
+        },
+        {
+          "action": "tick",
+          "at_ms": 160,
+          "expect": {
+            "visible": [
+              [
+                "silence-window",
+                1,
+                "valid"
+              ]
+            ],
+            "delta_ids": [
+              "silence-window"
+            ],
+            "valid_new_event": [
+              false
+            ]
+          }
+        },
+        {
+          "action": "observe",
+          "at_ms": 160,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "causal-session",
+            "state_version": 0,
+            "event_start_ms": 160,
+            "event_end_ms": 160,
+            "available_at_ms": 160,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "missing",
+              "quality": 0,
+              "age_ms": 0,
+              "reason": "synthetic sensor disconnect"
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "observation",
+            "observation_id": "mic-gap",
+            "modality": "audio",
+            "payload": {
+              "mock": true
+            }
+          }
+        },
+        {
+          "action": "tick",
+          "at_ms": 160,
+          "expect": {
+            "delta_ids": [
+              "mic-gap"
+            ],
+            "valid_new_event": [
+              false
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "partial-playback-stop-persona-switch",
+      "scope": {
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "session_id": "playback-session"
+      },
+      "voice_profile": "synthetic-a-voice-not-loaded",
+      "commands": [
+        {
+          "action": "start_utterance",
+          "at_ms": 0,
+          "utterance_id": "u1"
+        },
+        {
+          "action": "generate",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "playback-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "output_packet",
+            "utterance_id": "u1",
+            "sequence_id": 0,
+            "audio_start_ms": 0,
+            "audio_end_ms": 80,
+            "spans": [
+              {
+                "start_ms": 0,
+                "end_ms": 80,
+                "text": "第一段已播",
+                "claim_ids": [
+                  "c0"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "generate",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "playback-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "output_packet",
+            "utterance_id": "u1",
+            "sequence_id": 1,
+            "audio_start_ms": 80,
+            "audio_end_ms": 160,
+            "spans": [
+              {
+                "start_ms": 80,
+                "end_ms": 160,
+                "text": "第二段未完整播完",
+                "claim_ids": [
+                  "c1"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "generate",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "playback-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "output_packet",
+            "utterance_id": "u1",
+            "sequence_id": 2,
+            "audio_start_ms": 160,
+            "audio_end_ms": 240,
+            "spans": [
+              {
+                "start_ms": 160,
+                "end_ms": 240,
+                "text": "第三段未入队",
+                "claim_ids": [
+                  "c2"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "queue",
+          "at_ms": 0,
+          "sequence_id": 0
+        },
+        {
+          "action": "queue",
+          "at_ms": 0,
+          "sequence_id": 1,
+          "expect": {
+            "generated_until_ms": 240,
+            "queued_until_ms": 160,
+            "played_until_ms": 0,
+            "said_text": []
+          }
+        },
+        {
+          "action": "played",
+          "at_ms": 80,
+          "until_ms": 80,
+          "utterance_id": "u1",
+          "expect": {
+            "played_until_ms": 80,
+            "said_text": [
+              "第一段已播"
+            ]
+          }
+        },
+        {
+          "action": "remember",
+          "at_ms": 80,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "playback-session",
+            "state_version": 0,
+            "event_start_ms": 80,
+            "event_end_ms": 80,
+            "available_at_ms": 80,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "memory_event",
+            "memory_id": "m1",
+            "event_id": "report-1",
+            "summary": "用户报告 X，不自动视为世界事实",
+            "assertion_kind": "reported"
+          }
+        },
+        {
+          "action": "begin_switch",
+          "at_ms": 80,
+          "expect": {
+            "switch_pending": true
+          }
+        },
+        {
+          "action": "stopped",
+          "at_ms": 120,
+          "until_ms": 120,
+          "utterance_id": "u1",
+          "expect": {
+            "played_until_ms": 120,
+            "discarded_unplayed_ms": 120,
+            "said_text": [
+              "第一段已播"
+            ],
+            "active_queue_ms": 0
+          }
+        },
+        {
+          "action": "switch",
+          "at_ms": 120,
+          "scope": {
+            "persona_id": "synthetic-b",
+            "persona_version": "0.1",
+            "session_id": "new-persona-session"
+          },
+          "voice_profile": "synthetic-b-voice-not-loaded",
+          "expect": {
+            "active_scope": {
+              "persona_id": "synthetic-b",
+              "persona_version": "0.1",
+              "session_id": "new-persona-session"
+            },
+            "state_version": 0,
+            "cache_handle_count": 0,
+            "archived_memory_count": 1
+          }
+        },
+        {
+          "action": "snapshot",
+          "at_ms": 0,
+          "expect": {
+            "claim_ids": [],
+            "playback": null,
+            "voice_profile": "synthetic-b-voice-not-loaded"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "async-dependency-proof-question-change",
+      "scope": {
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "session_id": "async-session"
+      },
+      "voice_profile": "synthetic-voice-not-loaded",
+      "commands": [
+        {
+          "action": "premise",
+          "at_ms": 0,
+          "premise_id": "premise-1",
+          "revision": 1,
+          "expect": {
+            "state_version": 1
+          }
+        },
+        {
+          "action": "claim",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "async-session",
+            "state_version": 1,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "claim",
+            "claim_id": "c1",
+            "text": "待核实内容",
+            "evidence_status": "pending",
+            "evidence_ids": [],
+            "requires_cloud": true,
+            "valid_until_ms": 1000
+          }
+        },
+        {
+          "action": "request",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "async-session",
+            "state_version": 1,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "r1",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_request",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {
+              "premise-1": 1
+            },
+            "valid_until_ms": 1000
+          },
+          "expect": {
+            "status": "queued"
+          }
+        },
+        {
+          "action": "dispatch",
+          "at_ms": 10,
+          "request_id": "r1",
+          "expect": {
+            "status": "running"
+          }
+        },
+        {
+          "action": "advance_state",
+          "at_ms": 20,
+          "expect": {
+            "state_version": 2
+          }
+        },
+        {
+          "action": "result",
+          "at_ms": 200,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "async-session",
+            "state_version": 1,
+            "event_start_ms": 200,
+            "event_end_ms": 200,
+            "available_at_ms": 200,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "r1",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_result",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {
+              "premise-1": 1
+            },
+            "valid_until_ms": 1000,
+            "payload": {
+              "candidate": "模拟返回，不代表事实",
+              "mock": true
+            }
+          },
+          "expect": {
+            "accepted": true,
+            "reason": "applicable_not_fact_verified"
+          }
+        },
+        {
+          "action": "request",
+          "at_ms": 200,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "async-session",
+            "state_version": 2,
+            "event_start_ms": 200,
+            "event_end_ms": 200,
+            "available_at_ms": 200,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "r2",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_request",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {
+              "premise-1": 1
+            },
+            "valid_until_ms": 1000
+          }
+        },
+        {
+          "action": "dispatch",
+          "at_ms": 210,
+          "request_id": "r2"
+        },
+        {
+          "action": "change_question",
+          "at_ms": 220,
+          "expect": {
+            "question_version": 1
+          }
+        },
+        {
+          "action": "result",
+          "at_ms": 300,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "async-session",
+            "state_version": 2,
+            "event_start_ms": 300,
+            "event_end_ms": 300,
+            "available_at_ms": 300,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "r2",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_result",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {
+              "premise-1": 1
+            },
+            "valid_until_ms": 1000,
+            "payload": {
+              "candidate": "模拟返回，不代表事实",
+              "mock": true
+            }
+          },
+          "expect": {
+            "accepted": false,
+            "reason": "question_changed"
+          }
+        },
+        {
+          "action": "snapshot",
+          "at_ms": 300,
+          "expect": {
+            "playback": null,
+            "claim_ids": []
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "old-persona-callback-isolation",
+      "scope": {
+        "persona_id": "synthetic-a",
+        "persona_version": "0.1",
+        "session_id": "old-session"
+      },
+      "voice_profile": "synthetic-a-voice-not-loaded",
+      "commands": [
+        {
+          "action": "claim",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "old-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": null,
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "claim",
+            "claim_id": "c1",
+            "text": "待核验",
+            "evidence_status": "pending",
+            "evidence_ids": [],
+            "requires_cloud": true,
+            "valid_until_ms": 1000
+          }
+        },
+        {
+          "action": "request",
+          "at_ms": 0,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "old-session",
+            "state_version": 0,
+            "event_start_ms": 0,
+            "event_end_ms": 0,
+            "available_at_ms": 0,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "old-r",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_request",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {},
+            "valid_until_ms": 1000
+          }
+        },
+        {
+          "action": "dispatch",
+          "at_ms": 0,
+          "request_id": "old-r"
+        },
+        {
+          "action": "begin_switch",
+          "at_ms": 10
+        },
+        {
+          "action": "switch",
+          "at_ms": 10,
+          "scope": {
+            "persona_id": "synthetic-b",
+            "persona_version": "0.2",
+            "session_id": "current-session"
+          },
+          "voice_profile": "synthetic-b-voice-not-loaded"
+        },
+        {
+          "action": "result",
+          "at_ms": 10,
+          "record": {
+            "persona_id": "synthetic-a",
+            "persona_version": "0.1",
+            "session_id": "old-session",
+            "state_version": 0,
+            "event_start_ms": 10,
+            "event_end_ms": 10,
+            "available_at_ms": 10,
+            "source_ids": [
+              "synthetic-source"
+            ],
+            "provenance": [],
+            "validity": {
+              "status": "valid",
+              "quality": 1.0,
+              "age_ms": 0,
+              "reason": null
+            },
+            "revision": 0,
+            "request_id": "old-r",
+            "schema_version": "encephalon.runtime.v1",
+            "record_type": "async_result",
+            "request_version": 0,
+            "question_version": 0,
+            "claim_ids": [
+              "c1"
+            ],
+            "premise_versions": {},
+            "valid_until_ms": 1000,
+            "payload": {
+              "mock": true,
+              "text": "旧人物的回答"
+            }
+          },
+          "expect": {
+            "accepted": false,
+            "reason": "scope_mismatch"
+          }
+        },
+        {
+          "action": "snapshot",
+          "at_ms": 10,
+          "expect": {
+            "playback": null,
+            "claim_ids": []
+          }
+        }
+      ]
+    }
+  ]
+}
